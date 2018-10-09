@@ -46,10 +46,15 @@ public class Renderer {
     public void drawLine(int x1, int y1, int x2, int y2, int color){
         int dx = x2-x1;
         int dy = y2-y1;
+
         float k = dy/(float)dx;
+
+        if (dx == 0){
+            k = dy;
+        }
+
         float q = y1 - k*x1;
 
-//udělat nad 45°
         if (Math.abs(k)<=1){
 
                 if(dx < 0){
