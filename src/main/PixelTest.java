@@ -46,7 +46,7 @@ public class PixelTest {
             @Override
             public void mouseDragged(MouseEvent e) {
                 renderer.clear();
-                renderer.drawLine(400, 300, e.getX(), e.getY(), 0x00ffff);
+                renderer.drawDda(400, 300, e.getX(), e.getY(), 0x00ffff);
             }
         });
     }
