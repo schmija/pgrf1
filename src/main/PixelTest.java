@@ -28,25 +28,25 @@ public class PixelTest {
         canvas = new Canvas();
 
         window.add(canvas); // vložit plátno do okna
-        window.setVisible(true); // zorabzit okno
+        window.setVisible(true); // zobrazit okno
 
         renderer = new Renderer(img, canvas);
 
         renderer.drawPixel(100, 50, Color.GREEN.getRGB());
         // 0x00ff00 == Color.GREEN.getRGB()
-        renderer.drawLine(0,100,0,150,0xffff00);
-
-        canvas.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                renderer.drawLine(400, 300,e.getX(), e.getY(), Color.CYAN.getRGB());
-            }
-        });
+        renderer.drawLine(0, 1, 8, 4, 0xffff00);
 
         canvas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                renderer.drawPixel(e.getX(), e.getY(), 0xffff00);
+                renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+            }
+        });
+        canvas.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                renderer.clear();
+                renderer.drawLine(400, 300, e.getX(), e.getY(), 0x00ffff);
             }
         });
     }
