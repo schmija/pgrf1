@@ -1,4 +1,4 @@
-package main;
+package fill;
 
 import java.awt.image.BufferedImage;
 
