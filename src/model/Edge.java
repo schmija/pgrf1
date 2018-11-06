@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Edge {
 
     private int x1, y1, x2, y2;
@@ -48,6 +50,20 @@ public class Edge {
     public int getIntersection(int y) {
         // TODO vypočítat průsečík pomocí y, k, q (osa Y)
         return 0;
+    }
+
+    public boolean inside(Point point){
+        Point t = new Point(x2 - x1, y2 - y1);
+        Point n = new Point(t.y, -t.x);
+        Point v = new Point(point.x - x1, point.y - y1);
+
+        return (v.x * n.x + v.y * n.y < 0);
+    }
+
+    public Point getIntersection(Point p1, Point p2){
+
+
+        return null;
     }
 
 }

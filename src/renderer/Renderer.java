@@ -3,6 +3,7 @@ package renderer;
 import model.Point;
 import view.Raster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Renderer {
@@ -103,6 +104,24 @@ public class Renderer {
                     color
             );
         }
+    }
+
+    public List<Point> clip(List<Point> polygon, List<Point> clipPolygon){
+        List<Point> in = polygon;
+
+        Point p1 = null; //poslední clip point
+        for (Point p2 : clipPolygon){
+            List<Point> out = new ArrayList<>();
+            // vytvořit hranu z p1 do p2
+            // Point v1 = in.last
+            for (Point v2 : in){
+                //TODO algoritmus
+            }
+            p1 = p2;
+            in = out; // aktualizuj ořezávaný polygon
+        }
+
+        return in;
     }
 
 }
