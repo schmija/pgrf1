@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// za bonus implementace návrhového vzoru Singleton
 public class Raster extends JPanel {
 
     public static final int WIDTH = 800;
@@ -31,7 +32,7 @@ public class Raster extends JPanel {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                // říct plátnu, aby zobrazil aktuální img
+                // říct plátnu, aby zobrazilo aktuální img
                 repaint();
             }
         }, 0, FPS);
