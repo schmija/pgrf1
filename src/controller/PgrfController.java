@@ -21,17 +21,16 @@ public class PgrfController {
     private SeedFill seedFill;
     private final List<Point> polygonPoints = new ArrayList<>();
     private final List<Point> linePoints = new ArrayList<>();
+    private final List<Point> clipPoints = new ArrayList<>();
 
-    public PgrfController(PgrfWindow window) {
-        initObjects(window);
+    public PgrfController(Raster raster) {
+        this.raster = raster;
+        initObjects();
         initListeners();
     }
 
-    private void initObjects(PgrfWindow window) {
-        raster = new Raster();
-        raster.setFocusable(true);
-        raster.grabFocus();
-        window.add(raster); // vložit plátno do okna
+    private void initObjects() {
+         // vložit plátno do okna
 
         renderer = new Renderer(raster);
 
@@ -81,7 +80,6 @@ public class PgrfController {
         raster.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                //System.out.println(e.getKeyCode());
                 // na klávesu C vymazat plátno
                 if (e.getKeyCode() == KeyEvent.VK_C) {
                     raster.clear();
