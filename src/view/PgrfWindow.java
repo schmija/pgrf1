@@ -16,7 +16,7 @@ public class PgrfWindow extends JFrame {
         raster = new Raster();
         raster.setFocusable(true);
         raster.grabFocus();
-        add(raster);
+        add(raster); // vložit plátno do okna
     }
 
     public Raster getRaster() {

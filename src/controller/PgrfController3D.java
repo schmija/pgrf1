@@ -2,7 +2,6 @@ package controller;
 
 import model3D.Cube;
 import model3D.Solid;
-import renderer.Renderer;
 import renderer.Renderer3D;
 import view.Raster;
 
@@ -14,15 +13,18 @@ public class PgrfController3D {
 
     public PgrfController3D(Raster raster) {
         this.raster = raster;
-        initbjects();
+        initObjects();
         initListeners();
+
     }
 
-    private void initbjects(){
+    private void initObjects() {
         cube = new Cube();
+        renderer3D = new Renderer3D(raster);
+        renderer3D.draw(cube);
     }
 
-    private void initListeners(){
+    private void initListeners() {
 
     }
 }

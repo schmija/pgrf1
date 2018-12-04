@@ -37,7 +37,7 @@ public class ScanLine implements Filler {
         // 0. a 1. bod budou první hrana; 1. a 2. bod budou druhá hrana
         // ...; poslední a 0. bod budou poslední hrana
         // ignorovat vodorovné hrany
-        // vyvtořené hrany zorientovat a přidat do seznamu
+        // vytvořené hrany zorientovat a přidat do seznamu
 
         // najít minimum a maximum pro Y
         int minY = points.get(0).y;

@@ -2,6 +2,7 @@ package renderer;
 
 import model.Point;
 import view.Raster;
+import transforms.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,6 @@ public class Renderer {
     }
 
     public void drawPolygon(List<Point> polygonPoints, int color) {
-
         for (int i = 0; i < polygonPoints.size() - 1; i++) {
             drawDDA(polygonPoints.get(i).x,
                     polygonPoints.get(i).y,
@@ -92,30 +92,33 @@ public class Renderer {
                 polygonPoints.get(polygonPoints.size() - 1).y,
                 color
         );
-
     }
 
-    public void drawLines(List<Point> linePoints, int color) {
+    public void drawLines(List<Point2D> linePoints, int color) {
         for (int i = 0; i < linePoints.size() - 1; i += 2) {
-            drawDDA(linePoints.get(i).x,
-                    linePoints.get(i).y,
-                    linePoints.get(i + 1).x,
-                    linePoints.get(i + 1).y,
+            drawDDA((int) linePoints.get(i).getX(),
+                    (int) linePoints.get(i).getY(),
+                    (int) linePoints.get(i + 1).getX(),
+                    (int) linePoints.get(i + 1).getY(),
                     color
             );
         }
     }
 
-    public List<Point> clip(List<Point> polygon, List<Point> clipPolygon){
+    public List<Point> clip(List<Point> polygon, List<Point> clipPolygon) {
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
+        // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
+
         List<Point> in = polygon;
 
-        Point p1 = null; //poslední clip point
-        for (Point p2 : clipPolygon){
+        Point p1 = null; // vlož poslední clip point
+        for (Point p2 : clipPolygon) {
             List<Point> out = new ArrayList<>();
-            // vytvořit hranu z p1 do p2
+            // vytvoř hranu z bodů p1 a p2
             // Point v1 = in.last
-            for (Point v2 : in){
-                //TODO algoritmus
+            for (Point v2 : in) {
+                // TODO algoritmus
             }
             p1 = p2;
             in = out; // aktualizuj ořezávaný polygon
@@ -123,5 +126,4 @@ public class Renderer {
 
         return in;
     }
-
 }
